@@ -1,12 +1,31 @@
-image: bverhagen/exec-helper-package:debian-testing
-
 stages:
+    - build-container
     - build
+
+docker:
+    stage: build-container
+    tags:
+        - docker-build
+    image: docker:latest
+    services:
+        - docker:dind
+    variables:
+        BUILD_IMAGE: ${CI_REGISTRY_IMAGE}:cpp-introductory-day
+    before_script:
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    script:
+        - echo "Building image '$BUILD_IMAGE'"
+        - docker build -t ${BUILD_IMAGE} .
+        - docker push ${BUILD_IMAGE}
 
 exercises:
     stage: build
-    before_script:
-        - apt-get update
-        - apt-get install --yes cmake ninja-build g++ libsfml-dev ttf-ancient-fonts
+    tags:
+        - Linux
+    dependencies: []
+    image: ${CI_REGISTRY_IMAGE}:cpp-introductory-day
+    variables:
+        GIT_STRATEGY: none  # Disable git checkout
     script:
+        - cd /home/cpp-introductory-day
         - eh build

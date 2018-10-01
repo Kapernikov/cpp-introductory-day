@@ -1,0 +1,11 @@
+version: '3'
+services:
+  exercises:
+    image: cpp-introductory-day
+    volumes:
+        - /tmp/.X11-unix:/tmp/.X11-unix
+    # See https://wiki.ros.org/docker/Tutorials/Hardware%20Acceleration for instructions for your GPU
+    devices:
+        - "/dev/dri:/dev/dri"     # Use this for Intel integrated CPU's
+    environment:
+        - DISPLAY
