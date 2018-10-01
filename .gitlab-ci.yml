@@ -1,0 +1,12 @@
+image: bverhagen/exec-helper-package:debian-testing
+
+stages:
+    - build
+
+exercises:
+    stage: build
+    before_script:
+        - apt-get update
+        - apt-get install --yes cmake ninja-build g++ libsfml-dev ttf-ancient-fonts
+    script:
+        - eh build

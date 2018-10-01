@@ -1,0 +1,87 @@
+patterns:
+    TARGET:
+        default-values:
+            - all 
+        short-option: t
+        long-option: target
+    MODE:
+        default-values:
+            - debug
+            - release
+        short-option: m
+        long-option: mode
+    CONTAINER:
+        default-values:
+            - cpp-introductory-day-no-js
+        short-option: o
+        long-option: docker
+    COMMAND:
+        default-values:
+            - ls
+        short-option: c
+        long-option: cmd
+
+commands:
+    build: Build the TARGET exercises
+    run: Run the TARGET exercises
+    clean: Clean all temporary files
+    docker: Execute the command in CONTAINER
+    exercises: Build + run the TARGET exercise
+
+build:
+    - command-line-command
+
+run:
+    - command-line-command
+
+clean:
+    - command-line-command
+
+exercises:
+    - build
+    - run
+
+docker:
+    - cp-source
+    - command-line-command
+
+cp-source:
+    - command-line-command
+
+command-line-command:
+    clean:
+        command-line: [ rm, -rf, build, install]
+
+    cp-source:
+        working-dir: .
+        patterns:
+            - CONTAINER
+            - EH_WORKING_DIR
+        command-line:
+            - create-source-dir: [ docker, exec, "{CONTAINER}", "mkdir -p {EH_WORKING_DIR}"]
+            - copy-sources: [docker, cp, ., "{CONTAINER}:{EH_WORKING_DIR}/"]
+
+    docker:
+        working-dir: .
+        patterns:
+            - CONTAINER
+            - COMMAND
+            - MODE
+            - TARGET
+            - EH_WORKING_DIR
+        command-line: [ docker, exec, "--workdir={EH_WORKING_DIR}", "{CONTAINER}", "exec-helper {COMMAND} --mode {MODE} --target {TARGET}"]
+
+    build:
+        patterns:
+            - MODE
+            - TARGET
+        command-line:
+            - init: [ cmake, -G, "Ninja", -H., "-Bbuild/{MODE}/build", "-DCMAKE_INSTALL_PREFIX=build/{MODE}/install", -DCMAKE_EXPORT_COMPILE_COMMANDS=ON, "-DCMAKE_BUILD_TYPE={MODE}"]
+            - build: [ ninja, -C, "build/{MODE}/build", "{TARGET}"]
+            - install: [ ninja, -C, "build/{MODE}/build", install]
+
+    run:
+        patterns:
+            - MODE
+            - TARGET
+        command-line: ["./build/{MODE}/install/bin/{TARGET}"]
