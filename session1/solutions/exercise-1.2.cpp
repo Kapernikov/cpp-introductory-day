@@ -7,7 +7,7 @@
 int main(int /*argc*/, char** /*argv*/) {
     std::cout << "Hello world!!!" << std::endl;
 
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(200, 200, 16), "SFML works!");
     // run the program as long as the window is open
     while (window.isOpen())
     {

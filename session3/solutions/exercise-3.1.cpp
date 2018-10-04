@@ -29,7 +29,7 @@ int main(int /*argc*/, char** /*argv*/) {
     sf::Vector2f printVector(42, 43);
     std::cout << printVector << std::endl;
 
-    sf::RenderWindow window(sf::VideoMode(400, 400), "C++ Introductory day: Pong!");
+    sf::RenderWindow window(sf::VideoMode(400, 400, 16), "C++ Introductory day: Pong!");
     window.setVerticalSyncEnabled(true);
 
     std::vector<utils::RoundResult> score;

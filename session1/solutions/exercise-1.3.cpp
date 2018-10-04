@@ -15,7 +15,7 @@ int main(int /*argc*/, char** /*argv*/) {
     sf::Vector2f printVector(42, 43);
     std::cout << printVector << std::endl;
 
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(200, 200, 16), "SFML works!");
     // run the program as long as the window is open
     while (window.isOpen())
     {
