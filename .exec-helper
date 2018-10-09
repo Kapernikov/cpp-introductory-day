@@ -76,7 +76,7 @@ command-line-command:
             - MODE
             - TARGET
         command-line:
-            - init: [ cmake, -G, "Ninja", -H., "-Bbuild/{MODE}/build", "-DCMAKE_INSTALL_PREFIX=build/{MODE}/install", -DCMAKE_EXPORT_COMPILE_COMMANDS=ON, "-DCMAKE_BUILD_TYPE={MODE}"]
+            - init: [ cmake, -G, "Ninja", -H., "-Bbuild/{MODE}/build", "-DCMAKE_INSTALL_PREFIX=build/{MODE}/install", -DCMAKE_EXPORT_COMPILE_COMMANDS=ON, "-DCMAKE_BUILD_TYPE={MODE}", -DENABLE_SOLUTIONS=OFF]
             - build: [ ninja, -C, "build/{MODE}/build", "{TARGET}"]
             - install: [ ninja, -C, "build/{MODE}/build", install]
 

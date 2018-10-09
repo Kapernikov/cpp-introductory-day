@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.1)
 project(exercises CXX)
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
+option(ENABLE_SOLUTIONS "Enable the model solutions" OFF)
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
     add_definitions(-Wall -Wextra -Werror -std=c++11)
