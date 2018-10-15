@@ -1,7 +1,7 @@
 set(MODULE_NAME SFML)
 
 set(${MODULE_NAME}_LIBRARIES sfml-graphics sfml-window sfml-system)
-find_path(${MODULE_NAME}_INCLUDE_DIRS NAMES Window.hpp PATH_SUFFIXES ${MODULE_NAME})
+find_path(${MODULE_NAME}_INCLUDE_DIRS NAMES Window.hpp Graphics.hpp PATH_SUFFIXES ${MODULE_NAME})
 find_library(${MODULE_NAME}_LIBRARY_DIRS NAMES ${${MODULE_NAME}_LIBRARIES})
 
 include(FindPackageHandleStandardArgs)

@@ -3,6 +3,10 @@
 #include <cmath>
 #include <iostream>
 
+#ifndef M_PI
+#define M_PI           3.14159265358979323846  /* pi */
+#endif
+
 namespace utils {
     WindowSide outOfWindow(const sf::Vector2u& windowSize, const sf::Shape& shape) {
         auto shapeSize = shape.getGlobalBounds();
