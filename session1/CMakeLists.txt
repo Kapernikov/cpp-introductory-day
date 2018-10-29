@@ -7,7 +7,8 @@ else()
 
     set(SOURCE
         ### Add your cpp files here, relative to this file. Only one of these files is allowed to contain a main() function ###
-        ###   e.g. exercise-1.1.cpp
+        pong.cpp
+        ###
     )
 
     set(DEPS
