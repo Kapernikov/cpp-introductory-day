@@ -6,7 +6,8 @@ else()
     )
 
     set(SOURCE
-        ### Add your cpp files here, relative to this file. Only one of these files is allowed to contain a main() function ###
+        ### Add your cpp files here, relative to this file.
+        ### Only one of these files is allowed to contain a main() function ###
         pong.cpp
         ###
     )
