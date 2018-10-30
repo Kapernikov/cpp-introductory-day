@@ -23,6 +23,4 @@ target_link_libraries(sfml INTERFACE ${SFML_LIBRARIES})
 link_directories(${SFML_LIBRARY_DIRS})
 
 add_subdirectory(utils)
-add_subdirectory(session1)
-add_subdirectory(session2)
-add_subdirectory(session3)
+add_subdirectory(exercises)

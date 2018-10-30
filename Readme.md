@@ -13,6 +13,6 @@ _Note:_ Copy the content of the _\<path to sfml\>/bin_ to the _install/bin_ fold
 
 ### Linux
 ```Bash
-cmake -G Ninja -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -DENABLE_SOLUTIONS=OFF
+cmake -G Ninja -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install
 ninja install
 ```
