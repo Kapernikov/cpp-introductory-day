@@ -4,7 +4,7 @@
 #include <iostream>
 
 #ifndef M_PI
-#define M_PI           3.14159265358979323846  /* pi */
+#define M_PI           3.14159265358979323846f  /* pi */
 #endif
 
 namespace utils {
@@ -66,8 +66,8 @@ namespace utils {
         m_left(5.0f),
         m_right(5.0f)
     {
-        m_left.setPosition(xPosition - 2.0 * m_left.getRadius(), yPosition);
-        m_right.setPosition(xPosition + 2.0 * m_right.getRadius(), yPosition);
+        m_left.setPosition(xPosition - 2.0f * m_left.getRadius(), yPosition);
+        m_right.setPosition(xPosition + 2.0f * m_right.getRadius(), yPosition);
 
         m_left.setOutlineThickness(1);
         m_right.setOutlineThickness(1);

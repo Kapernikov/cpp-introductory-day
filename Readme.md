@@ -6,7 +6,7 @@ Public repository containing all public sources for the Kapernikov C++ introduct
 ## Build
 ### Windows
 ```Bash
-cmake -G Ninja -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -DENABLE_SOLUTIONS=OFF -DSFML_INCLUDE_DIRS=<path to sfml>\include -DSFML_LIBRARY_DIRS=<path to sfml>\SFML-2.5.0\lib
+cmake -G Ninja -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -DENABLE_SOLUTIONS=OFF -DSFML_DIR=<path to sfml>\lib\cmake\SFML
 ninja install
 ```
 _Note:_ Copy the content of the _\<path to sfml\>/bin_ to the _install/bin_ folder

@@ -16,11 +16,11 @@ endif()
 
 set(BIN_DIRECTORY bin)
 
-find_package(SFML)
+set(SFML_STATIC_LIBRARIES TRUE)
+find_package(SFML REQUIRED COMPONENTS graphics window system)
 add_library(sfml INTERFACE)
-target_include_directories(sfml SYSTEM INTERFACE ${SFML_INCLUDE_DIRS})
-target_link_libraries(sfml INTERFACE ${SFML_LIBRARIES})
-link_directories(${SFML_LIBRARY_DIRS})
+target_include_directories(sfml SYSTEM INTERFACE sfml-graphics sfml-window sfml-system)
+target_link_libraries(sfml INTERFACE sfml-graphics sfml-window sfml-system)
 
 add_subdirectory(utils)
 add_subdirectory(exercises)
