@@ -16,7 +16,9 @@ endif()
 
 set(BIN_DIRECTORY bin)
 
-set(SFML_STATIC_LIBRARIES TRUE)
+if(MSVC)
+    set(SFML_STATIC_LIBRARIES TRUE)
+endif()
 find_package(SFML REQUIRED COMPONENTS graphics window system)
 add_library(sfml INTERFACE)
 target_include_directories(sfml SYSTEM INTERFACE sfml-graphics sfml-window sfml-system)
