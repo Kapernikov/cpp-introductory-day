@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.1)
 project(exercises CXX)
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
+list(APPEND CMAKE_MODULE_PATH /usr/share/SFML/cmake/Modules)
 option(ENABLE_SOLUTIONS "Enable the model solutions" OFF)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -18,6 +19,10 @@ set(BIN_DIRECTORY bin)
 
 if(MSVC)
     set(SFML_STATIC_LIBRARIES TRUE)
+endif()
+
+if(NOT SFML_DIR)
+    set(SFML_DIR /usr/bin/sfml)
 endif()
 find_package(SFML REQUIRED COMPONENTS graphics window system)
 add_library(sfml INTERFACE)
